@@ -39,7 +39,7 @@ class AdminService
     public function storePost(Array $data)
     {
         try {
-            DB::connection();
+            DB::beginTransaction();
             $image = $data['path_image'];
             $url = Storage::disk('local')->put('public/posts_images', $image);
             $url = str_replace("public", "storage", $url);
